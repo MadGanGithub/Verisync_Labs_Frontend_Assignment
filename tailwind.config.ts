@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        buttons:"#fd6262",
+        bordercolor:"#676770",
+        formcolor:"#141416",
+        filtercolor:"#e57070"
       },
     },
   },
