@@ -27,9 +27,21 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const pregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+      if (!pregex.test(password)) {
+        toast.error("Password must be at least 8 characters long, with uppercase, lowercase, number, and special character.");
+        return;
+      }
       const userId = Number(username);
 
       if (mode === "reg") {
+        const checkUser = localStorage.getItem(`username:${userId}`);
+        if(checkUser){
+          toast.error("User already registered with this user id")
+          return;
+        }
+
         const passHash = get_pass_hash(password);
         localStorage.setItem(
           `username:${userId}`,
