@@ -5,6 +5,10 @@ This project comprises two main objectives:
 1. **Responsive Dashboard Design** - A responsive interface displaying user data fetched from a mock API.
 2. **Implementing a ZK-Based Authentication System** - A front-end authentication system using zkAuth Kit for zero-knowledge proof-based login.
 
+# Endpoints
+**/** - dashboard
+**/question1** - authentication system
+
 ## Screenshots
 ### User Dashboard
 
