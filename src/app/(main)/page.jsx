@@ -8,7 +8,6 @@ import init, {
   verify_proof,
 } from "../pkg/zk_wasm.js";
 
-
 const Login = () => {
   const [wasm, setWasm] = useState(false);
   const [username, setUsername] = useState("");
@@ -26,46 +25,42 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try{
-    const userId = Number(username);
+    try {
+      const userId = Number(username);
 
-    if (mode === "reg") {
-      // Registration logic
-      const passHash = get_pass_hash(password);
-      localStorage.setItem(
-        `user:${userId}`,
-        JSON.stringify({ pass_hash: passHash })
-      );
-      alert("User registered successfully!");
-      setMode("log");
-      
-    } else {
-      
-      const proof = await generate_proof(userId, password);
-      const storedUser = localStorage.getItem(`user:${userId}`);
-
-      if (storedUser) {
-        const { pass_hash } = JSON.parse(storedUser);
-        const isVerified = verify_proof(proof, pass_hash, userId);
-
-        if(isVerified){
-          alert("Login successful!");
-          window.location.href="/question1";
-        }else{
-          alert("Login failed: Invalid credentials.");
-        }
-
+      if (mode === "reg") {
+        const passHash = get_pass_hash(password);
+        localStorage.setItem(
+          `username:${userId}`,
+          JSON.stringify({ pass_hash: passHash })
+        );
+        alert("User registered successfully!");
+        setMode("log");
       } else {
-        alert("Login failed: User not found.");
-      }
-    }
+        const proof = await generate_proof(userId, password);
+        const storedUser = localStorage.getItem(`username:${userId}`);
 
-    setUsername("");
-    setPassword("");
-  }catch(error){
-    console.log(error)
-    alert('Login failed: Invalid credentials')
-  }
+        if (storedUser) {
+          const { pass_hash } = JSON.parse(storedUser);
+          const isVerified = verify_proof(proof, pass_hash, userId);
+
+          if (isVerified) {
+            alert("Login successful!");
+            window.location.href = "/question1";
+          } else {
+            alert("Invalid credentials.");
+          }
+        } else {
+          alert("User not found.");
+        }
+      }
+
+      setUsername("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
+      alert("Login failed: Invalid credentials");
+    }
   };
 
   return (
@@ -74,23 +69,19 @@ const Login = () => {
       style={{ backgroundImage: "url('/background1.jpeg')" }}
     >
       <div className="flex flex-col items-center justify-center min-h-screen w-screen sm:w-2/4 p-5 gap-2">
-        <Image src="/logo.svg" alt="logo" width={40} height={40}/>
+        <Image src="/logo.svg" alt="logo" width={40} height={40} />
         <h1 className="text-3xl font-bold mb-8">
           {mode === "reg" ? (
             <div className="flex flex-col items-center text-center">
               <div className="text-2xl font-bold mb-2">Join VeriSync Labs</div>
-              <div className="text-lg">
-                Register now to join!
-              </div>
+              <div className="text-lg">Register now to join!</div>
             </div>
           ) : (
             <div className="flex flex-col items-center text-center">
               <div className="text-2xl font-bold mb-2 flex sm:flex-row flex-col gap-1">
                 Welcome back to <span> VeriSync Labs!</span>
               </div>
-              <div className="text-lg">
-                Log in to continue your journey
-              </div>
+              <div className="text-lg">Log in to continue your journey</div>
             </div>
           )}
         </h1>
