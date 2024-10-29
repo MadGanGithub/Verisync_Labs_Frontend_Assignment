@@ -8,25 +8,25 @@ This project comprises two main objectives:
 ## Screenshots
 ### User Dashboard
 
-![User Dashboard](screenshots/three.jpg)
+![User Dashboard](public/screenshots/three.jpg)
 
 ### Modal
 
-![Modal](screenshots/four.jpg)
+![Modal](public/screenshots/four.jpg)
 
 ### Registration Page
 
-![Registration Page](screenshots/two.jpg)
+![Registration Page](public/screenshots/two.jpg)
 
 ### Login Page
 
-![Login Page](screenshots/one.jpg)
+![Login Page](public/screenshots/one.jpg)
 
 ### Mobile Optimization
 
-![Registration](screenshots/mob1.jpg)
-![Dashboard](screenshots/mob2.jpg)
-![Modal](screenshots/mob3.jpg)
+![Registration](public/screenshots/mob1.jpg)
+![Dashboard](public/screenshots/mob2.jpg)
+![Modal](public/screenshots/mob3.jpg)
 
 ## Responsive Dashboard Design
 
