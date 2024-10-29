@@ -2,6 +2,7 @@
 
 import Image from "next/image.js";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import init, {
   generate_proof,
   get_pass_hash,
@@ -34,7 +35,7 @@ const Login = () => {
           `username:${userId}`,
           JSON.stringify({ pass_hash: passHash })
         );
-        alert("User registered successfully!");
+        toast.success("User registered successfully!");
         setMode("log");
       } else {
         const proof = await generate_proof(userId, password);
@@ -45,13 +46,13 @@ const Login = () => {
           const isVerified = verify_proof(proof, pass_hash, userId);
 
           if (isVerified) {
-            alert("Login successful!");
+            toast.success("Login successful!");
             window.location.href = "/question1";
           } else {
-            alert("Invalid credentials.");
+            toast.error("Invalid credentials.");
           }
         } else {
-          alert("User not found.");
+          toast.error("User not found.");
         }
       }
 
@@ -59,7 +60,7 @@ const Login = () => {
       setPassword("");
     } catch (error) {
       console.log(error);
-      alert("Login failed: Invalid credentials");
+      toast.error("Login failed: Invalid credentials");
     }
   };
 
