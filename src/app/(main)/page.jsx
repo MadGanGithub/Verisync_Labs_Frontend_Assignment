@@ -63,6 +63,7 @@ const Login = () => {
     setUsername("");
     setPassword("");
   }catch(error){
+    console.log(error)
     alert('Login failed: Invalid credentials')
   }
   };

@@ -694,7 +694,7 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper1330 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper1330 = function(arg0, arg1) {
         const ret = makeMutClosure(arg0, arg1, 465, __wbg_adapter_28);
         return ret;
     };
@@ -712,9 +712,9 @@ function __wbg_get_imports() {
     return imports;
 }
 
-function __wbg_init_memory(imports, memory) {
+// function __wbg_init_memory(imports, memory) {
 
-}
+// }
 
 function __wbg_finalize_init(instance, module) {
     wasm = instance.exports;
