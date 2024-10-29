@@ -79,7 +79,7 @@ const Login = () => {
             <div className="flex flex-col items-center text-center">
               <div className="text-2xl font-bold mb-2">Join VeriSync Labs</div>
               <div className="text-lg">
-                Register now to unlock the future of secure technology
+                Register now to join!
               </div>
             </div>
           ) : (
@@ -88,7 +88,7 @@ const Login = () => {
                 Welcome back to <span> VeriSync Labs!</span>
               </div>
               <div className="text-lg">
-                Log in to continue your journey in secure innovation
+                Log in to continue your journey
               </div>
             </div>
           )}

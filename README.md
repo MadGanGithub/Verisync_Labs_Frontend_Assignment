@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# User Dashboard and ZK-Based Authentication System
 
-## Getting Started
+This project comprises two main objectives: 
 
-First, run the development server:
+1. **Responsive Dashboard Design** - A responsive interface displaying user data fetched from a mock API.
+2. **Implementing a ZK-Based Authentication System** - A front-end authentication system using zkAuth Kit for zero-knowledge proof-based login.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Screenshots
+### User Dashboard
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![User Dashboard](screenshots/three.jpg)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Modal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Modal](screenshots/four.jpg)
 
-## Learn More
+### Registration Page
 
-To learn more about Next.js, take a look at the following resources:
+![Registration Page](screenshots/two.jpg)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Login Page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Login Page](screenshots/one.jpg)
 
-## Deploy on Vercel
+### Mobile Optimization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Registration](screenshots/mob1.jpg)
+![Dashboard](screenshots/mob2.jpg)
+![Modal](screenshots/mob3.jpg)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Responsive Dashboard Design
+
+### Objectives
+
+Build a responsive dashboard interface that displays a list of user data fetched from a mock API. The dashboard should be visually appealing and adapt to both desktop and mobile views.
+
+### Requirements
+
+1. Fetch a list of users from the API endpoint: 
+   [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users).
+2. Display the user data in a card-based layout on desktop and a single-column list on mobile.
+3. Include search functionality to filter users by name or username.
+4. Implement sorting options (by name and by username).
+5. Add a hover effect on each user card to reveal a "View Details" button.
+6. Clicking "View Details" should open a modal showing additional details (e.g., address, phone, website).
+
+### Evaluation Criteria
+
+- Clean, organized, and responsive design.
+- Code readability and structure.
+- Effective use of CSS frameworks (if any).
+- Proper state management and API handling.
+
+---
+
+## Implementing a ZK-Based Authentication System
+
+### Objectives
+
+Develop a front-end authentication system using the provided zkAuth kit to implement a zero-knowledge (ZK) proof-based login.
+
+### Requirements
+
+1. **Registration Flow:**
+   - Build a registration page where users can input their desired username and password.
+   - Use the `get_pass_hash` function from the provided WASM JS file to generate a hashed password for the entered password.
+   - Save the hashed password as part of the simulated backend process.
+
+2. **Login Flow:**
+   - Create a login page where users can input their username and password.
+   - Call the `generate_proof` function from the provided WASM JS file when users attempt to log in.
+   - Send the generated ZK proof along with the username to the simulated backend (stored in local storage).
+   - Use the `verify_proof` function in the WASM JS file to check the proof against the hash stored for the user in the backend. Display an alert indicating whether the login is successful or failed based on verification.
